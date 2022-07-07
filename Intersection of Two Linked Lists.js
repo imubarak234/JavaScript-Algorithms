@@ -1,6 +1,6 @@
 class Node {
-  constructor(value, next = null){
-    this.value = value;
+  constructor(val, next = null){
+    this.val = val;
     this.next = next;
   }
 }
@@ -32,7 +32,7 @@ class LinkedList {
     let count = 0;
     while(node){
       if(index == count)
-      return node.value;
+      return node.val;
       node = node.next;
       count += 1;
     }
@@ -42,7 +42,7 @@ class LinkedList {
     let node = this.head
     
     while(node){
-      console.log(node.value)
+      console.log(node.val)
       node = node.next
     }
   }
@@ -51,10 +51,10 @@ class LinkedList {
 const links = new LinkedList()
 const links2 = new LinkedList()
 
-links.addArray([4,1,8,4,5])
-links2.addArray([5,6,1,8,4,5])
+links.addArray([2,2,4,5,4])
+links2.addArray([2,2,4,5,4])
 
-console.log(links.head)
+//console.log(links.head)
 
 const getInersectionNode = () => {
   let node = links.head
@@ -63,25 +63,75 @@ const getInersectionNode = () => {
   let countNode = 0;
   let countNode2 = 0;
   let array1 = [];
+  let array2 = [];
   let isRepeated = false;
 
   while(node){
       countNode++;
-      if(array1.includes(node.value)) isRepeated = true;
-      array1.push(node.value);
+      if(array1.includes(node.val)) isRepeated = true;
+      array1.push(node.val);
       node = node.next;
     }
 
     while(node2){
       countNode2++;
-      if(array1.includes(node2.value)) isRepeated = true;
-      array1.push(node2.value);
+      if(array2.includes(node2.val)) isRepeated = true;
+      array2.push(node2.val);
       node2 = node2.next;
     }
 
     node = links.head
     node2 = links2.head
 
-    
-
+    if(links.head == links2.head){
+        return links.head;
+    }
+    else if(countNode2 >= countNode){
+        
+        while(node2){
+        if(countNode == countNode2){
+          if(isRepeated){
+            if ((node.val == node2.val) && (countNode <= 3)){
+              return(node.val);
+            }
+          }
+          else {
+            if(node.val == node2.val){
+              return node.val
+            }
+          }
+          
+          node = node.next;
+          countNode--;
+        }
+          node2 = node2.next;
+          countNode2--;
+      }
+    }
+    else if(countNode > countNode2){
+      while(node){
+          
+          if(countNode == countNode2){
+              if(isRepeated){
+                if((node2.val== node.val) && (countNode2 <= 3)){
+                  return(node2)
+                }
+              }
+              else {
+                if(node2.val == node.val){
+                  return node
+                }
+              }
+            node2 = node2.next;
+            countNode2--;
+          }
+        
+          
+        node = node.next;
+        countNode--;
+      }
+      
+    }
 }
+
+console.log(getInersectionNode())
