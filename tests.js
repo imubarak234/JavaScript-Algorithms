@@ -49,7 +49,7 @@ else {
   console.log('Not Finished')
 }
 
-let testScore = 30;
+let testScore = 50;
 
 if((testScore <= 100) && (testScore >= 70)){
   console.log("A");
@@ -57,3 +57,48 @@ if((testScore <= 100) && (testScore >= 70)){
 else if((testScore < 70) && (testScore >= 60)){
   console.log("B");
 }
+else if((testScore < 60) && (testScore >= 50)){
+  console.log('C')
+}
+else if((testScore < 50) && (testScore >= 40)){
+  console.log('D');
+}
+else {
+  console.log('F');
+}
+
+if((testScore == 50) && (testScore == 70)){
+  console.log("You passed")
+}
+
+
+//Loops 
+
+const arr = [];
+
+
+for (let count = 20; count > 10; count-= 2){
+  arr.push(count)
+}
+
+//Loops 
+
+//if statements
+
+//conditionals
+
+
+console.log(arr)
+
+function firstFunction(){
+  return "My first function";
+}
+
+function addToScore(args){
+  testScore = testScore + args
+}
+
+addToScore(10)
+addToScore(10)
+console.log(testScore)
+
