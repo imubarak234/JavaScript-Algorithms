@@ -134,3 +134,5 @@ function scores(testscores){
 }
 
 scores(50)
+
+console.log(Date.now())
