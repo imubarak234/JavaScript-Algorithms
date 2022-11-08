@@ -19,3 +19,16 @@ const multipleChar = (args) => {
 
   return answer;
 }
+
+const longestString = (args) => {
+  let finalAns = '';
+  let countLength = 0;
+  for(let x = 0; x < args.length; x++){
+    if(args[x].length > countLength){
+      finalAns = args[x];
+      countLength = args[x].length;
+    }
+  }
+
+  return finalAns;
+}
